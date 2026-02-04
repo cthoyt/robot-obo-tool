@@ -38,8 +38,7 @@ downloading the Java JAR and wraps calls via the console using `subprocess`.
 
 ## 💪 Getting Started
 
-The `convert` function does a lot of heavy lifting. This package would accept
-PRs for exposing other ROBOT functionality.
+The `convert` can be called like in:
 
 ```python
 import robot_obo_tool
@@ -48,6 +47,22 @@ robot_obo_tool.convert(
    "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
    "pato.obo",
    check=False,  # remove pesky errors for incorrect OWL
+)
+```
+
+Other ROBOT commands don't (yet) have a wrapper, but you can directly call ROBOT
+with `call()`:
+
+```python
+import robot_obo_tool
+
+robot_obo_tool.call(
+   "convert",
+   "-I"
+   "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
+   "-o",
+   "pato.obo",
+   "--check=false",
 )
 ```
 

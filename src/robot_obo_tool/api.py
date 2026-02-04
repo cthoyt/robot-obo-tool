@@ -61,7 +61,7 @@ def is_available(*, version: str | None = None) -> bool:
         return False
 
     try:
-        call(["--help"])
+        call("--help")
     except Exception:
         logger.error("ROBOT was downloaded to %s but could not be run with --help", robot_jar_path)
         return False
@@ -69,7 +69,7 @@ def is_available(*, version: str | None = None) -> bool:
     return True
 
 
-def call(args: list[str], *, version: str | None = None) -> str:
+def call(*args: str, version: str | None = None) -> str:
     """Run a ROBOT command and return the output as a string."""
     rr = ["java", "-jar", str(ensure_jar(version=version)), *args]
     logger.debug("Running shell command: %s", rr)
@@ -173,7 +173,7 @@ def convert(
     if debug:
         args.append("-vvv")
 
-    return call(args, version=version)
+    return call(*args, version=version)
 
 
 #: Prefixes that denote remote resources
