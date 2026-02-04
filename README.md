@@ -33,17 +33,25 @@
     -->
 </p>
 
-A wrapper around ROBOT.
+A Python wrapper around [ROBOT](https://robot.obolibrary.org/).
 
 ## 💪 Getting Started
 
-> TODO show in a very small amount of space the **MOST** useful thing your
-> package can do. Make it as short as possible! You have an entire set of docs
-> for later.
+The `convert` function does a lot of heavy lifting. This package would accept
+PRs for exposing other ROBOT functionality.
+
+```python
+import robot_obo_tool
+
+robot_obo_tool.convert(
+   "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
+   "pato.obo",
+   check=False,  # remove pesky errors for incorrect OWL
+)
+```
 
 ## 🚀 Installation
 
-<!-- Uncomment this section after your first ``tox -e finish``
 The most recent release can be installed from
 [PyPI](https://pypi.org/project/robot_obo_tool/) with uv:
 
@@ -56,7 +64,6 @@ or with pip:
 ```console
 $ python3 -m pip install robot_obo_tool
 ```
--->
 
 The most recent code and data can be installed directly from GitHub with uv:
 
