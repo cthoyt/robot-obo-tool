@@ -1,0 +1,4 @@
+# see https://docs.codecov.com/v4.6/docs/codecov-yaml
+ignore:
+  - "src/robot_obo_tool/__main__.py"
+  - "src/robot_obo_tool/cli.py"
