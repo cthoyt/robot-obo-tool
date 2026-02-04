@@ -39,7 +39,10 @@ classifiers = [
 keywords = [
     "snekpack", # please keep this keyword to credit the cookiecutter-snekpack template
     "cookiecutter",
-    # TODO add your own free-text keywords
+    "ontologies",
+    "obo",
+    "robot",
+    "open biomedical ontologies",
 ]
 
 # License Information.
@@ -50,9 +53,7 @@ license-files = [
 
 requires-python = ">=3.10"
 dependencies = [
-    "more_itertools", # missing from itertools in stdlib
-    "tqdm", # progress bars
-    "typing-extensions",
+    "pystow",
 ]
 
 # see https://peps.python.org/pep-0735/ and https://docs.astral.sh/uv/concepts/dependencies/#dependency-groups
@@ -65,11 +66,6 @@ docs = [
     "sphinx>=8,<9",
     "sphinx-rtd-theme>=3.0",
     "sphinx_automodapi",
-    # Include if your project uses Pydantic:
-    # "autodoc_pydantic",
-    # To include LaTeX comments easily in your docs.
-    # If you uncomment this, don't forget to do the same in docs/conf.py
-    # texext
 ]
 lint = [
     "ruff",
@@ -77,9 +73,6 @@ lint = [
 typing = [
     { include-group = "tests" },
     "mypy",
-    "pydantic",
-    "types-click",
-    # You will probably have to add additional type stubs here, especially if you're using tox-uv
 ]
 docs-lint = [
     { include-group = "docs" },

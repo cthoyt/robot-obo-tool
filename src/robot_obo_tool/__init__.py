@@ -1,9 +1,12 @@
 """A wrapper around ROBOT."""
 
-from .api import hello, square
+from .api import ROBOT_VERSION, ROBOTError, call_robot, convert, get_robot_jar_path, is_available
 
-# being explicit about exports is important!
 __all__ = [
-    "hello",
-    "square",
+    "ROBOT_VERSION",
+    "ROBOTError",
+    "call_robot",
+    "convert",
+    "get_robot_jar_path",
+    "is_available",
 ]
