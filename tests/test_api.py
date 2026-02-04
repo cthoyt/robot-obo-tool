@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from robot_obo_tool.api import ROBOTError, convert, get_robot_jar_path, is_available
+from robot_obo_tool.api import ROBOTError, convert, ensure_jar, is_available
 from robot_obo_tool.version import get_version
 
 
@@ -21,7 +21,7 @@ class TestVersion(unittest.TestCase):
 
     def test_get_path(self) -> None:
         """Test getting the JAR path."""
-        self.assertIsNotNone(get_robot_jar_path())
+        self.assertIsNotNone(ensure_jar())
 
     def test_robot_is_available(self) -> None:
         """Test ROBOT is available."""

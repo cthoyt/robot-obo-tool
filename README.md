@@ -33,7 +33,8 @@
     -->
 </p>
 
-A Python wrapper around [ROBOT](https://robot.obolibrary.org/).
+A Python wrapper around [ROBOT](https://robot.obolibrary.org/) that automates
+downloading the Java JAR and wraps calls via the console using `subprocess`.
 
 ## 💪 Getting Started
 

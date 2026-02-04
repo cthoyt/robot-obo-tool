@@ -17,9 +17,9 @@ import pystow
 __all__ = [
     "ROBOT_VERSION",
     "ROBOTError",
-    "call_robot",
+    "call",
     "convert",
-    "get_robot_jar_path",
+    "ensure_jar",
     "is_available",
 ]
 
@@ -30,15 +30,15 @@ ROBOT_VERSION = "1.9.8"
 ROBOT_MODULE = pystow.module("robot")
 
 
-def get_robot_jar_path(*, version: str | None = None) -> Path:
-    """Ensure the robot jar is there."""
+def ensure_jar(*, version: str | None = None) -> Path:
+    """Ensure the ROBOT JAR is cached."""
     if version is None:
         version = ROBOT_VERSION
     url = f"https://github.com/ontodev/robot/releases/download/v{version}/robot.jar"
     return ROBOT_MODULE.ensure(url=url, version=version)
 
 
-def is_available() -> bool:
+def is_available(*, version: str | None = None) -> bool:
     """Check if ROBOT is available."""
     if which("java") is None:
         # suggested in https://stackoverflow.com/questions/11210104/check-if-a-program-exists-from-a-python-script
@@ -54,14 +54,14 @@ def is_available() -> bool:
         )
         return False
 
-    robot_jar_path = get_robot_jar_path()
+    robot_jar_path = ensure_jar(version=version)
     if not robot_jar_path.is_file():
         logger.error("ROBOT was not successfully downloaded to %s", robot_jar_path)
         # ROBOT was unsuccessfully downloaded
         return False
 
     try:
-        call_robot(["--help"])
+        call(["--help"])
     except Exception:
         logger.error("ROBOT was downloaded to %s but could not be run with --help", robot_jar_path)
         return False
@@ -69,9 +69,9 @@ def is_available() -> bool:
     return True
 
 
-def call_robot(args: list[str]) -> str:
-    """Run a robot command and return the output as a string."""
-    rr = ["java", "-jar", str(get_robot_jar_path()), *args]
+def call(args: list[str], *, version: str | None = None) -> str:
+    """Run a ROBOT command and return the output as a string."""
+    rr = ["java", "-jar", str(ensure_jar(version=version)), *args]
     logger.debug("Running shell command: %s", rr)
     try:
         ret = check_output(  # noqa:S603
@@ -101,6 +101,7 @@ def convert(
     reason: bool = False,
     extra_args: list[str] | None = None,
     debug: bool = False,
+    version: str | None = None,
 ) -> str:
     """Convert an OBO file to an OWL file with ROBOT.
 
@@ -124,6 +125,7 @@ def convert(
         Extra positional arguments to pass in the command line
     :param debug:
         Turn on -vvv
+    :param version: the version of ROBOT to use
     :return: Output from standard out from running ROBOT
     """
     if input_flag is None:
@@ -171,7 +173,7 @@ def convert(
     if debug:
         args.append("-vvv")
 
-    return call_robot(args)
+    return call(args, version=version)
 
 
 #: Prefixes that denote remote resources
