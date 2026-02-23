@@ -104,7 +104,7 @@ Repository = "https://github.com/cthoyt/robot-obo-tool.git"
 Documentation = "https://robot_obo_tool.readthedocs.io"
 Funding = "https://github.com/sponsors/cthoyt"
 
-
+[project.scripts]
 
 [tool.cruft]
 skip = [
@@ -138,7 +138,6 @@ omit = [
     "docs/*",
     "src/robot_obo_tool/version.py",
     "src/robot_obo_tool/__main__.py",
-    "src/robot_obo_tool/cli.py",
 ]
 
 [tool.coverage.paths]
@@ -247,8 +246,3 @@ replace = "release = \"{new_version}\""
 filename = "src/robot_obo_tool/version.py"
 search = "VERSION = \"{current_version}\""
 replace = "VERSION = \"{new_version}\""
-
-[[tool.bumpversion.files]]
-filename = "CITATION.cff"
-search = "version: {current_version}"
-replace = "version: {new_version}"
