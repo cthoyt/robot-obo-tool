@@ -26,7 +26,7 @@ __all__ = [
 logger = logging.getLogger(__name__)
 
 #: The default ROBOT version to download
-ROBOT_VERSION = "1.9.8"
+ROBOT_VERSION = "1.9.10"
 ROBOT_MODULE = pystow.module("robot")
 
 
