@@ -44,9 +44,9 @@ The `convert` can be called like in:
 import robot_obo_tool
 
 robot_obo_tool.convert(
-   "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
-   "pato.obo",
-   check=False,  # remove pesky errors for incorrect OWL
+    "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
+    "pato.obo",
+    check=False,  # remove pesky errors for incorrect OWL
 )
 ```
 
@@ -57,12 +57,12 @@ with `call()`:
 import robot_obo_tool
 
 robot_obo_tool.call(
-   "convert",
-   "-I"
-   "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
-   "-o",
-   "pato.obo",
-   "--check=false",
+    "convert",
+    "-I",
+    "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl",
+    "-o",
+    "pato.obo",
+    "--check=false",
 )
 ```
 
