@@ -47,7 +47,7 @@ def is_available(*, version: str | None = None) -> bool:
 
     try:
         check_output(["java", "--help"])  # noqa: S607
-    except Exception:
+    except Exception:  # noqa:BLE001
         logger.error(
             "java --help failed - this means the java runtime environment (JRE) "
             "might not be configured properly"
@@ -62,7 +62,7 @@ def is_available(*, version: str | None = None) -> bool:
 
     try:
         call("--help")
-    except Exception:
+    except Exception:  # noqa:BLE001
         logger.error("ROBOT was downloaded to %s but could not be run with --help", robot_jar_path)
         return False
 
