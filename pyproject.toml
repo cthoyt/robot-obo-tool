@@ -3,7 +3,7 @@ requires = ["uv_build>=0.9.6,<1.0"]
 build-backend = "uv_build"
 
 [project]
-name = "robot_obo_tool"
+name = "robot-obo-tool"
 version = "0.0.2-dev"
 description = "A wrapper around ROBOT"
 readme = "README.md"
@@ -101,8 +101,6 @@ Homepage = "https://github.com/cthoyt/robot-obo-tool"
 Repository = "https://github.com/cthoyt/robot-obo-tool.git"
 Documentation = "https://robot_obo_tool.readthedocs.io"
 Funding = "https://github.com/sponsors/cthoyt"
-
-
 
 [tool.cruft]
 skip = [
